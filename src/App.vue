@@ -7,8 +7,11 @@
       <template #end>
         <o-navbar-item tag="div">
           <div class="buttons">
-            <a href="https://parzibyte.me/#contacto" class="button is-danger">
-              <o-icon icon="help"></o-icon>
+            <a
+              href="https://parzibyte.me/#contacto"
+              class="button is-danger"
+            >
+              <o-icon icon="help" />
               <strong>Ayuda y soporte</strong>
             </a>
           </div>
@@ -23,23 +26,31 @@
             message="Puede ser una URL, página de Facebook, texto, etcétera"
           >
             <o-input
-              @keyup="actualizarCodigoQr()"
-              v-model="detallesQr.value"
               ref="textareaContenido"
+              v-model="detallesQr.value"
               type="textarea"
-            ></o-input>
+              @keyup="actualizarCodigoQr()"
+            />
           </o-field>
           <o-field grouped>
             <o-field label="Calidad">
               <o-select
-                @update:modelValue="actualizarCodigoQr()"
-                placeholder="Seleccione"
                 v-model="detallesQr.level"
+                placeholder="Seleccione"
+                @update:model-value="actualizarCodigoQr()"
               >
-                <option value="L">Baja</option>
-                <option value="M">Media</option>
-                <option value="Q">Alta</option>
-                <option value="H">Máxima</option>
+                <option value="L">
+                  Baja
+                </option>
+                <option value="M">
+                  Media
+                </option>
+                <option value="Q">
+                  Alta
+                </option>
+                <option value="H">
+                  Máxima
+                </option>
               </o-select>
             </o-field>
             <o-field
@@ -49,58 +60,69 @@
               <o-slider
                 v-model="detallesQr.size"
                 :min="10"
-                @update:modelValue="actualizarCodigoQr()"
                 :max="1000"
-              ></o-slider>
+                @update:model-value="actualizarCodigoQr()"
+              />
             </o-field>
           </o-field>
           <o-field grouped>
             <o-field label="Color del código">
               <Sketch
-                @update:modelValue="onColorCambiado"
-                :modelValue="colores"
-              ></Sketch>
+                :model-value="colores"
+                @update:model-value="onColorCambiado"
+              />
             </o-field>
 
             <o-field label="Color de fondo">
               <Sketch
-                @update:modelValue="onColorDeFondoCambiado"
-                :modelValue="coloresFondo"
-              ></Sketch>
+                :model-value="coloresFondo"
+                @update:model-value="onColorDeFondoCambiado"
+              />
             </o-field>
             <o-field label="Opacidad del fondo">
               <o-slider
                 v-model="detallesQr.backgroundAlpha"
                 :min="0"
                 :step="0.1"
-                @update:modelValue="actualizarCodigoQr()"
                 :max="1"
-              ></o-slider>
+                @update:model-value="actualizarCodigoQr()"
+              />
             </o-field>
           </o-field>
         </div>
         <div class="column is-one-third">
           <div class="card has-text-centered">
             <header class="card-header">
-              <p class="card-header-title">Previsualización</p>
+              <p class="card-header-title">
+                Previsualización
+              </p>
             </header>
             <div class="card-content">
               <div class="content">
-                <img alt="Código QR generado por la app" id="codigo" />
-                <br />
-                <o-button @click="descargar()" variant="success"
-                  >Descargar</o-button
+                <img
+                  id="codigo"
+                  alt="Código QR generado por la app"
                 >
+                <br>
+                <o-button
+                  variant="success"
+                  @click="descargar()"
+                >
+                  Descargar
+                </o-button>
               </div>
             </div>
           </div>
-          <br />
+          <br>
           <div class="card has-text-centered">
-            <div class="card-content"></div>
+            <div class="card-content" />
           </div>
         </div>
       </div>
-      <o-notification variant="info" :closable="false">
+      <o-notification
+        variant="info"
+        :closable="false"
+      >
         Con este generador de códigos QR puedes personalizar el contenido (URL,
         texto, número telefónico, enlace a página de Facebook) del código QR así
         como el tamaño, colores, calidad y transparencia
@@ -110,8 +132,17 @@
       <div class="content has-text-centered">
         <p>
           <strong>Generador de códigos QR </strong>creado con
-          <o-icon icon="heart" variant="danger"></o-icon> por
-          <a href="https://parzibyte.me/blog" target="_blank">Parzibyte</a> y mantenido por <a href="https://github.com/Uthanien/generador-qr.git" target="_blank">Uthanien</a>
+          <o-icon
+            icon="heart"
+            variant="danger"
+          /> por
+          <a
+            href="https://parzibyte.me/blog"
+            target="_blank"
+          >Parzibyte</a> y mantenido por <a
+            href="https://github.com/Uthanien/generador-qr.git"
+            target="_blank"
+          >Uthanien</a>
         </p>
       </div>
     </footer>
@@ -126,10 +157,10 @@ import QRious from "qrious";
 import { Sketch } from '@ckpack/vue-color';
 
 export default {
+  name: "App",
   components: {
     Sketch,
   },
-  name: "App",
   data() {
     return {
       detallesQr: {
@@ -148,6 +179,13 @@ export default {
         hex: colorDeFondoPorDefecto,
       },
     };
+  },
+  mounted() {
+    this.qr = new QRious({
+      element: document.querySelector("#codigo"),
+    });
+    this.actualizarCodigoQr();
+    this.$refs.textareaContenido.$el.focus();
   },
   methods: {
     descargar() {
@@ -174,13 +212,6 @@ export default {
       this.detallesQr.background = nuevoColor.hex;
       this.actualizarCodigoQr();
     },
-  },
-  mounted() {
-    this.qr = new QRious({
-      element: document.querySelector("#codigo"),
-    });
-    this.actualizarCodigoQr();
-    this.$refs.textareaContenido.$el.focus();
   },
 };
 </script>
