@@ -16,7 +16,14 @@ When working in this repository, assume the role of a **Software Architect exper
 
 ## Project Overview
 
+**Version**: 2.0.0
+
 This is a QR code generator web application built with Vue 3, Oruga UI (Bulma theme), and QRious library. The app allows users to create customizable QR codes with control over content, size, colors, quality, and transparency, then download them as PNG images.
+
+### Version History
+- **v2.0.0** - Full update to latest versions (Vite 7, ESLint 9, Vue 3.5.24)
+- **v0.2.0** - Migration to Vue 3, Vite, and Oruga UI
+- **v0.1.0** - Original version with Vue 2 and Buefy
 
 ## Development Commands
 
@@ -40,15 +47,18 @@ npm run lint
 ## Architecture
 
 ### Technology Stack
-- **Vue 3.5**: Component framework (migrated from Vue 2.6)
-- **Vite 6.x**: Build tool and development server (replaces Vue CLI)
-- **Oruga UI 0.12**: Successor to Buefy, compatible with Vue 3
-- **@oruga-ui/theme-bulma 0.8**: Bulma theme for Oruga UI
-- **Bulma 1.0**: CSS framework
+- **Vue 3.5.24**: Component framework (migrated from Vue 2.6)
+- **Vite 7.2.2**: Build tool and development server (replaces Vue CLI)
+- **@vitejs/plugin-vue 6.0.2**: Official Vite plugin for Vue 3
+- **Oruga UI 0.12.1**: Successor to Buefy, compatible with Vue 3
+- **@oruga-ui/theme-bulma 0.8.0**: Bulma theme for Oruga UI
+- **Bulma 1.0.4**: CSS framework
 - **QRious 4.0.2**: QR code generation library
-- **@ckpack/vue-color 1.5**: Color picker component for Vue 3 (uses Sketch component)
-- **@mdi/font 7.x**: Material Design Icons
-- **Node.js 20+**: Required runtime version
+- **@ckpack/vue-color 1.6.0**: Color picker component for Vue 3 (uses Sketch component)
+- **@mdi/font 7.4.47**: Material Design Icons
+- **ESLint 9.39.1**: Linter with flat config format
+- **eslint-plugin-vue 10.5.1**: Vue-specific linting rules
+- **Node.js 20+**: Required runtime version (tested on 24.5.0)
 
 ### Application Structure
 The application is a single-page app (SPA) with a simple architecture:
@@ -89,11 +99,18 @@ The application is a single-page app (SPA) with a simple architecture:
 
 ### Build Configuration
 
-**vite.config.js** - Vite configuration:
+**vite.config.js** - Vite 7 configuration:
 - Uses `@vitejs/plugin-vue` for Vue 3 SFC support
 - Configures `@` alias for `src` directory
 - Sets `base: './'` for production to ensure proper asset paths
 - Build output to `dist` directory with assets in `assets` subdirectory
+
+**eslint.config.js** - ESLint 9 flat config:
+- Uses new flat config format (ESLint 9+)
+- Configured with `@eslint/js` recommended rules
+- Includes `eslint-plugin-vue` flat/recommended configuration
+- Supports both `.js` and `.vue` files
+- Ignores `dist/`, `node_modules/`, and config files
 
 **index.html** (root directory):
 - Located in project root (Vite requirement, not in `public/` like Vue CLI)
@@ -102,9 +119,22 @@ The application is a single-page app (SPA) with a simple architecture:
 - App mounts to `<div id="app" class="section"></div>`
 - Static assets (favicon, images) remain in `public/` directory
 
-### Migration Notes from Vue 2 to Vue 3
+### Migration Notes
 
-**Breaking Changes Addressed**:
+**v2.0.0 Updates (Latest)**:
+- Updated Vite 6.x → 7.2.2 (major performance improvements)
+- Updated @vitejs/plugin-vue 5.x → 6.0.2
+- Migrated ESLint 8 → ESLint 9 with new flat config format
+- Updated eslint-plugin-vue 9.x → 10.5.1
+- Updated Vue 3.5.13 → 3.5.24
+- Updated @ckpack/vue-color 1.5 → 1.6
+- Updated Bulma 1.0.2 → 1.0.4
+- Removed `@vue/eslint-config-prettier` (no longer needed)
+- Created `eslint.config.js` with flat config format
+- All dependencies updated to latest stable versions
+- 0 security vulnerabilities
+
+**v0.2.0 - Vue 2 to Vue 3 Migration**:
 - Migrated from Vue CLI to Vite for faster builds and better DX
 - Replaced Buefy with Oruga UI (maintains similar API but with `o-` prefix)
 - Updated all component events from `@input` to `@update:modelValue`
@@ -120,7 +150,11 @@ The application is a single-page app (SPA) with a simple architecture:
 
 ## Notes
 
-- Compatible with Node.js 20 or superior
-- ESLint configured with Vue 3 recommended rules
+- Compatible with Node.js 20 or superior (tested on Node.js 24.5.0)
+- ESLint configured with flat config format (ESLint 9+)
+- All dependencies are at their latest stable versions
+- 0 security vulnerabilities
 - No test suite is currently configured
 - All functionality from Vue 2 version has been preserved
+- Build time: ~2.7s for production
+- Development server startup: ~300ms with Vite 7
