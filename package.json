@@ -1,42 +1,29 @@
 {
   "name": "generador-qr",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .vue,.js --fix"
   },
   "dependencies": {
-    "@mdi/font": "^5.9.55",
-    "buefy": "^0.9.8",
-    "core-js": "^3.6.5",
+    "@ckpack/vue-color": "^1.5.0",
+    "@mdi/font": "^7.4.47",
+    "@oruga-ui/oruga-next": "^0.12.1",
+    "@oruga-ui/theme-bulma": "^0.8.0",
+    "bulma": "^1.0.2",
     "qrious": "^4.0.2",
-    "vue": "^2.6.11",
-    "vue-color": "^2.8.1"
+    "vue": "^3.5.13"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
-    "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
+    "@vitejs/plugin-vue": "^5.2.1",
+    "@vue/eslint-config-prettier": "^10.1.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-vue": "^9.31.0",
+    "vite": "^6.0.5"
   },
   "browserslist": [
     "> 1%",

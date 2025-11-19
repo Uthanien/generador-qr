@@ -2,6 +2,10 @@
 <html lang="es">
 
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="/favicon.ico">
 
   <!-- Primary Meta Tags -->
   <title>Generador de códigos QR gratuito — Crea, personaliza y descarga códigos QR gratis</title>
@@ -15,7 +19,7 @@
   <meta property="og:title" content="Generador de códigos QR gratuito — Crea, personaliza y descarga códigos QR gratis">
   <meta property="og:description"
     content="Con este generador de códigos QR puedes personalizar el contenido (URL, texto, teléfono, Facebook), tamaño, colores, calidad y transparencia para descargarlo">
-  <meta property="og:image" content="<%= BASE_URL %>Generador de códigos QR.png">
+  <meta property="og:image" content="/Generador de códigos QR.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
@@ -24,27 +28,16 @@
     content="Generador de códigos QR gratuito — Crea, personaliza y descarga códigos QR gratis">
   <meta property="twitter:description"
     content="Con este generador de códigos QR puedes personalizar el contenido (URL, texto, teléfono, Facebook), tamaño, colores, calidad y transparencia para descargarlo">
-  <meta property="twitter:image" content="<%= BASE_URL %>Generador de códigos QR.png">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-  <% if (process.env.NODE_ENV==="production" ){ %>
-    <script data-ad-client="ca-pub-4859317680104877" async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <% } %>
-      <title>
-        Generador de códigos QR by Parzibyte
-      </title>
+  <meta property="twitter:image" content="/Generador de códigos QR.png">
 </head>
 
 <body>
   <noscript>
-    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
-        Please enable it to continue.</strong>
+    <strong>Lo sentimos, pero la aplicación no funciona correctamente sin JavaScript habilitado.
+      Por favor actívalo para continuar.</strong>
   </noscript>
   <div id="app" class="section"></div>
-  <!-- built files will be auto injected -->
+  <script type="module" src="/src/main.js"></script>
 </body>
 
 </html>
