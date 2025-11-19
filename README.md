@@ -2,8 +2,6 @@
 Generador de códigos QR gratuito y open source. Creado originalmente por [parzibyte](https://github.com/parzibyte/generador-qr) ahora migrado a Vue.js 3.x y Oruga UI (sucesor oficial de Buefy compatible con Vue 3) por [Uthanien](https://github.com/Uthanien/generador-qr)
 
 
-Sordid details following...
-
 ## Project setup
 ```
 npm install
